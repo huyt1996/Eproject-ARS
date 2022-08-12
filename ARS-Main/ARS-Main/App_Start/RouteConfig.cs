@@ -23,6 +23,21 @@ namespace ARS_Main
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "AirplaneTypes", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Airplanes",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Airplanes", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Flights",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Flights", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "FlightSchedules",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "FlightSchedules", action = "Index", id = UrlParameter.Optional }
+            );
 
         }
     }

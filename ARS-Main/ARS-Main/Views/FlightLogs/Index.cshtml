@@ -10,37 +10,47 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Flight.FlightNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FlightSchedule.From)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LogDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Flight.FlightNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlightSchedule.From)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LogDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
+<table class="table table-hover" id="flightlog">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.FlightNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightSchedule.From)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight.FlightNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightSchedule.From)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+@section scripts{
+    <script type="text/javascript">
+        $('#flightlog').DataTable({
+            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+        });
+    </script>
+}
