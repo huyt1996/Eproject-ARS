@@ -180,6 +180,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -187,21 +188,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208120906341_addTable.cs" />
+    <Compile Include="Migrations\202208120906341_addTable.Designer.cs">
+      <DependentUpon>202208120906341_addTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Airplane.cs" />
-    <Compile Include="Models\AirplaneType.cs" />
-    <Compile Include="Models\Airport.cs" />
-    <Compile Include="Models\Booking.cs" />
+    <Compile Include="Models\Plane.cs" />
     <Compile Include="Models\CreditCardAttribute.cs" />
-    <Compile Include="Models\Flight.cs" />
-    <Compile Include="Models\FlightLog.cs" />
-    <Compile Include="Models\FlightSchedule.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MyDbConect.cs" />
-    <Compile Include="Models\Passenger.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -323,7 +319,94 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Tmp\404.html" />
+    <Content Include="Tmp\500.html" />
+    <Content Include="Tmp\blank-page.html" />
+    <Content Include="Tmp\buttons.html" />
+    <Content Include="Tmp\charts.html" />
+    <Content Include="Tmp\compose.html" />
+    <Content Include="Tmp\css\animate.css" />
+    <Content Include="Tmp\css\bootstrap.css" />
+    <Content Include="Tmp\css\custom.css" />
+    <Content Include="Tmp\css\export.css" />
+    <Content Include="Tmp\css\font-awesome.css" />
+    <Content Include="Tmp\css\graph.css" />
+    <Content Include="Tmp\css\jqcandlestick.css" />
+    <Content Include="Tmp\css\monthly.css" />
+    <Content Include="Tmp\css\owl.carousel.css" />
+    <Content Include="Tmp\css\SidebarNav.min.css" />
+    <Content Include="Tmp\css\style.css" />
+    <Content Include="Tmp\fonts\fontawesome-webfont.svg" />
+    <Content Include="Tmp\forms.html" />
+    <Content Include="Tmp\general.html" />
+    <Content Include="Tmp\grids.html" />
+    <Content Include="Tmp\icons.html" />
+    <Content Include="Tmp\images\1.jpg" />
+    <Content Include="Tmp\images\2.jpg" />
+    <Content Include="Tmp\images\3.jpg" />
+    <Content Include="Tmp\images\4.jpg" />
+    <Content Include="Tmp\images\a.png" />
+    <Content Include="Tmp\images\i1.png" />
+    <Content Include="Tmp\images\i2.png" />
+    <Content Include="Tmp\images\i3.png" />
+    <Content Include="Tmp\images\i4.png" />
+    <Content Include="Tmp\images\img-sprite.png" />
+    <Content Include="Tmp\images\img1.png" />
+    <Content Include="Tmp\images\lock.png" />
+    <Content Include="Tmp\images\mail.png" />
+    <Content Include="Tmp\images\search-icon.png" />
+    <Content Include="Tmp\images\slider1.jpg" />
+    <Content Include="Tmp\images\slider2.jpg" />
+    <Content Include="Tmp\images\slider3.jpg" />
+    <Content Include="Tmp\images\slider4.jpg" />
+    <Content Include="Tmp\images\slider5.jpg" />
+    <Content Include="Tmp\images\slider6.jpg" />
+    <Content Include="Tmp\images\slider7.jpg" />
+    <Content Include="Tmp\images\tick.png" />
+    <Content Include="Tmp\images\user.png" />
+    <Content Include="Tmp\images\weather.jpg" />
+    <Content Include="Tmp\inbox.html" />
+    <Content Include="Tmp\index.html" />
+    <Content Include="Tmp\js\amcharts.js" />
+    <Content Include="Tmp\js\bootstrap.js" />
+    <Content Include="Tmp\js\Chart.bundle.js" />
+    <Content Include="Tmp\js\Chart.js" />
+    <Content Include="Tmp\js\Chart.min.js" />
+    <Content Include="Tmp\js\chartinator.js" />
+    <Content Include="Tmp\js\classie.js" />
+    <Content Include="Tmp\js\custom.js" />
+    <Content Include="Tmp\js\export.min.js" />
+    <Content Include="Tmp\js\images\dragIconRoundBig.svg" />
+    <Content Include="Tmp\js\images\lens.svg" />
+    <Content Include="Tmp\js\index.js" />
+    <Content Include="Tmp\js\index1.js" />
+    <Content Include="Tmp\js\index2.js" />
+    <Content Include="Tmp\js\jquery-1.11.1.min.js" />
+    <Content Include="Tmp\js\jquery.flot.js" />
+    <Content Include="Tmp\js\jquery.jqcandlestick.min.js" />
+    <Content Include="Tmp\js\jquery.nicescroll.js" />
+    <Content Include="Tmp\js\light.js" />
+    <Content Include="Tmp\js\metisMenu.min.js" />
+    <Content Include="Tmp\js\modernizr.custom.js" />
+    <Content Include="Tmp\js\monthly.js" />
+    <Content Include="Tmp\js\owl.carousel.js" />
+    <Content Include="Tmp\js\pie-chart.js" />
+    <Content Include="Tmp\js\scripts.js" />
+    <Content Include="Tmp\js\serial.js" />
+    <Content Include="Tmp\js\SidebarNav.min.js" />
+    <Content Include="Tmp\js\SimpleChart.js" />
+    <Content Include="Tmp\js\utils.js" />
+    <Content Include="Tmp\js\validator.min.js" />
+    <Content Include="Tmp\login.html" />
+    <Content Include="Tmp\media.html" />
+    <Content Include="Tmp\signup.html" />
+    <Content Include="Tmp\tables.html" />
+    <Content Include="Tmp\typography.html" />
+    <Content Include="Tmp\validation.html" />
+    <Content Include="Tmp\w3layouts-License.txt" />
+    <Content Include="Tmp\widgets.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -524,6 +607,20 @@
     <Content Include="Assets\User\Layout\Guest\scss\bootstrap\_utilities.scss" />
     <Content Include="Assets\User\Layout\Guest\scss\bootstrap\_variables.scss" />
     <Content Include="Assets\User\Layout\Guest\scss\style.scss" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Tmp\fonts\fontawesome-webfont.eot" />
+    <Content Include="Tmp\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Tmp\fonts\fontawesome-webfont.woff" />
+    <Content Include="Tmp\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Tmp\fonts\FontAwesome.otf" />
+    <Content Include="Tmp\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Tmp\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Tmp\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Tmp\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -572,6 +669,8 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Shared\_AdminLayoutPage.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -593,6 +692,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202208120906341_addTable.resx">
+      <DependentUpon>202208120906341_addTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

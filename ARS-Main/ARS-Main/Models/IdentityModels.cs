@@ -21,10 +21,12 @@ namespace ARS_Main.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        public DbSet<RegisterViewModel> UserLogins { get; set; }
+        public DbSet<AeroPlaneInfo> PlaneInfo { get; set; }
+        public DbSet<FlightBooking> FlightBookings { get; set; }
 
         public static ApplicationDbContext Create()
         {

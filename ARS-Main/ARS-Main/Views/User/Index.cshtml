@@ -7,14 +7,15 @@
 
 @if (ViewBag.displayMenu == "Yes")
 {
-    <h1>Welcome Admin. Now you can create user Role.</h1>
+    <h1>Welcome Admin. Now you can create user Role and manage Flights here.</h1>
     <h3>
         <li>@Html.ActionLink("Manage Role", "Index", "Role")</li>
+        <li>@Html.ActionLink("Manage Flight", "Index", "Flight")</li>
     </h3>
 
 }
 else
 {
-    <h2>  Welcome <strong>@ViewBag.Name</strong> :) .We will add user module soon </h2>
+    <h2>  Welcome <strong>@ViewBag.Name</strong> :) Please select your</h2>
 }
 

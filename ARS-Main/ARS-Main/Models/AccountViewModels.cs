@@ -63,6 +63,9 @@ namespace ARS_Main.Models
 
     public class RegisterViewModel
     {
+        [Key]
+        public int UserId { get; set; }
+
         [Required]
         [Display(Name = "UserRoles")]
         public string UserRoles { get; set; }
