@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -9,128 +10,107 @@ using WebARS.Models;
 
 namespace ARS_Main.Controllers
 {
-    public class HomeController : Controller
+    public class AirplanesController : Controller
     {
         private MyDbConect db = new MyDbConect();
+
+        // GET: Airplanes
         public ActionResult Index()
         {
-            return View();
+            return View(db.Airplanes.ToList());
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        //    AIRPLANE TYPES 
-        
-
-        // GET: AirplaneTypes
-        public ActionResult IndexAirplaneTypes()
-        {
-            return View(db.AirplaneTypes.ToList());
-        }
-
-        // GET: AirplaneTypes/Details/5
+        // GET: Airplanes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            Airplane airplane = db.Airplanes.Find(id);
+            if (airplane == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            return View(airplane);
         }
 
-        // GET: AirplaneTypes/Create
+        // GET: Airplanes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AirplaneTypes/Create
+        // POST: Airplanes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Identifier,Description")] AirplaneType airplaneType)
+        public ActionResult Create([Bind(Include = "Id,Capacity")] Airplane airplane)
         {
             if (ModelState.IsValid)
             {
-                db.AirplaneTypes.Add(airplaneType);
+                db.Airplanes.Add(airplane);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(airplaneType);
+            return View(airplane);
         }
 
-        // GET: AirplaneTypes/Edit/5
+        // GET: Airplanes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            Airplane airplane = db.Airplanes.Find(id);
+            if (airplane == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            return View(airplane);
         }
 
-        // POST: AirplaneTypes/Edit/5
+        // POST: Airplanes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Identifier,Description")] AirplaneType airplaneType)
+        public ActionResult Edit([Bind(Include = "Id,Capacity")] Airplane airplane)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(airplaneType).State = EntityState.Modified;
+                db.Entry(airplane).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(airplaneType);
+            return View(airplane);
         }
 
-        // GET: AirplaneTypes/Delete/5
+        // GET: Airplanes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            Airplane airplane = db.Airplanes.Find(id);
+            if (airplane == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            return View(airplane);
         }
 
-        // POST: AirplaneTypes/Delete/5
+        // POST: Airplanes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            db.AirplaneTypes.Remove(airplaneType);
+            Airplane airplane = db.Airplanes.Find(id);
+            db.Airplanes.Remove(airplane);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

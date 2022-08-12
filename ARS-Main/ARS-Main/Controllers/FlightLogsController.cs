@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -9,128 +10,116 @@ using WebARS.Models;
 
 namespace ARS_Main.Controllers
 {
-    public class HomeController : Controller
+    public class FlightLogsController : Controller
     {
         private MyDbConect db = new MyDbConect();
+
+        // GET: FlightLogs
         public ActionResult Index()
         {
-            return View();
+            var flightLogs = db.FlightLogs.Include(f => f.Flight).Include(f => f.FlightSchedule);
+            return View(flightLogs.ToList());
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        //    AIRPLANE TYPES 
-        
-
-        // GET: AirplaneTypes
-        public ActionResult IndexAirplaneTypes()
-        {
-            return View(db.AirplaneTypes.ToList());
-        }
-
-        // GET: AirplaneTypes/Details/5
+        // GET: FlightLogs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            FlightLog flightLog = db.FlightLogs.Find(id);
+            if (flightLog == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            return View(flightLog);
         }
 
-        // GET: AirplaneTypes/Create
+        // GET: FlightLogs/Create
         public ActionResult Create()
         {
+            ViewBag.FlightId = new SelectList(db.Flights, "Id", "FlightNo");
+            ViewBag.FlightNo = new SelectList(db.FlightSchedules, "FlightNo", "From");
             return View();
         }
 
-        // POST: AirplaneTypes/Create
+        // POST: FlightLogs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Identifier,Description")] AirplaneType airplaneType)
+        public ActionResult Create([Bind(Include = "Id,LogDate,FlightNo,FlightId")] FlightLog flightLog)
         {
             if (ModelState.IsValid)
             {
-                db.AirplaneTypes.Add(airplaneType);
+                db.FlightLogs.Add(flightLog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(airplaneType);
+            ViewBag.FlightId = new SelectList(db.Flights, "Id", "FlightNo", flightLog.FlightId);
+            ViewBag.FlightNo = new SelectList(db.FlightSchedules, "FlightNo", "From", flightLog.FlightNo);
+            return View(flightLog);
         }
 
-        // GET: AirplaneTypes/Edit/5
+        // GET: FlightLogs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            FlightLog flightLog = db.FlightLogs.Find(id);
+            if (flightLog == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            ViewBag.FlightId = new SelectList(db.Flights, "Id", "FlightNo", flightLog.FlightId);
+            ViewBag.FlightNo = new SelectList(db.FlightSchedules, "FlightNo", "From", flightLog.FlightNo);
+            return View(flightLog);
         }
 
-        // POST: AirplaneTypes/Edit/5
+        // POST: FlightLogs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Identifier,Description")] AirplaneType airplaneType)
+        public ActionResult Edit([Bind(Include = "Id,LogDate,FlightNo,FlightId")] FlightLog flightLog)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(airplaneType).State = EntityState.Modified;
+                db.Entry(flightLog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(airplaneType);
+            ViewBag.FlightId = new SelectList(db.Flights, "Id", "FlightNo", flightLog.FlightId);
+            ViewBag.FlightNo = new SelectList(db.FlightSchedules, "FlightNo", "From", flightLog.FlightNo);
+            return View(flightLog);
         }
 
-        // GET: AirplaneTypes/Delete/5
+        // GET: FlightLogs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            FlightLog flightLog = db.FlightLogs.Find(id);
+            if (flightLog == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            return View(flightLog);
         }
 
-        // POST: AirplaneTypes/Delete/5
+        // POST: FlightLogs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            db.AirplaneTypes.Remove(airplaneType);
+            FlightLog flightLog = db.FlightLogs.Find(id);
+            db.FlightLogs.Remove(flightLog);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

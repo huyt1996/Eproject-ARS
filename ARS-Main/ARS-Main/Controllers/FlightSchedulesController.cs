@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -9,128 +10,112 @@ using WebARS.Models;
 
 namespace ARS_Main.Controllers
 {
-    public class HomeController : Controller
+    public class FlightSchedulesController : Controller
     {
         private MyDbConect db = new MyDbConect();
+
+        // GET: FlightSchedules
         public ActionResult Index()
         {
-            return View();
+            var flightSchedules = db.FlightSchedules.Include(f => f.Flight);
+            return View(flightSchedules.ToList());
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        //    AIRPLANE TYPES 
-        
-
-        // GET: AirplaneTypes
-        public ActionResult IndexAirplaneTypes()
-        {
-            return View(db.AirplaneTypes.ToList());
-        }
-
-        // GET: AirplaneTypes/Details/5
-        public ActionResult Details(int? id)
+        // GET: FlightSchedules/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            FlightSchedule flightSchedule = db.FlightSchedules.Find(id);
+            if (flightSchedule == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            return View(flightSchedule);
         }
 
-        // GET: AirplaneTypes/Create
+        // GET: FlightSchedules/Create
         public ActionResult Create()
         {
+            ViewBag.FlightId = new SelectList(db.Flights, "Id", "FlightNo");
             return View();
         }
 
-        // POST: AirplaneTypes/Create
+        // POST: FlightSchedules/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Identifier,Description")] AirplaneType airplaneType)
+        public ActionResult Create([Bind(Include = "FlightNo,FlightId,From,To,Arrival,Departure")] FlightSchedule flightSchedule)
         {
             if (ModelState.IsValid)
             {
-                db.AirplaneTypes.Add(airplaneType);
+                db.FlightSchedules.Add(flightSchedule);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(airplaneType);
+            ViewBag.FlightId = new SelectList(db.Flights, "Id", "FlightNo", flightSchedule.FlightId);
+            return View(flightSchedule);
         }
 
-        // GET: AirplaneTypes/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: FlightSchedules/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            FlightSchedule flightSchedule = db.FlightSchedules.Find(id);
+            if (flightSchedule == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            ViewBag.FlightId = new SelectList(db.Flights, "Id", "FlightNo", flightSchedule.FlightId);
+            return View(flightSchedule);
         }
 
-        // POST: AirplaneTypes/Edit/5
+        // POST: FlightSchedules/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Identifier,Description")] AirplaneType airplaneType)
+        public ActionResult Edit([Bind(Include = "FlightNo,FlightId,From,To,Arrival,Departure")] FlightSchedule flightSchedule)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(airplaneType).State = EntityState.Modified;
+                db.Entry(flightSchedule).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(airplaneType);
+            ViewBag.FlightId = new SelectList(db.Flights, "Id", "FlightNo", flightSchedule.FlightId);
+            return View(flightSchedule);
         }
 
-        // GET: AirplaneTypes/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: FlightSchedules/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            if (airplaneType == null)
+            FlightSchedule flightSchedule = db.FlightSchedules.Find(id);
+            if (flightSchedule == null)
             {
                 return HttpNotFound();
             }
-            return View(airplaneType);
+            return View(flightSchedule);
         }
 
-        // POST: AirplaneTypes/Delete/5
+        // POST: FlightSchedules/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            AirplaneType airplaneType = db.AirplaneTypes.Find(id);
-            db.AirplaneTypes.Remove(airplaneType);
+            FlightSchedule flightSchedule = db.FlightSchedules.Find(id);
+            db.FlightSchedules.Remove(flightSchedule);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

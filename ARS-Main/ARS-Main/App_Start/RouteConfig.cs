@@ -18,6 +18,12 @@ namespace ARS_Main
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "AirplaneTypes",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "AirplaneTypes", action = "Index", id = UrlParameter.Optional }
+            );
+
         }
     }
 }

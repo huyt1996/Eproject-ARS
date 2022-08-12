@@ -25,7 +25,16 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Role", "Index", "Role")</li>
+                    <li >
+                        @Html.ActionLink("AirplaneTypes", "Create", "AirplaneTypes")
+                       
+                    </li>
                 </ul>
+                @*<ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Role", "Index", "Role")</li>
+                </ul>*@
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
