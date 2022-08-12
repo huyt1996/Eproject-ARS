@@ -13,7 +13,7 @@ namespace ARS_Main.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202208121048516_1"; }
+            get { return "202208121236388_1"; }
         }
         
         string IMigrationMetadata.Source

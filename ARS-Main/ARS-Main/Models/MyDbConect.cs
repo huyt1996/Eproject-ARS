@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARS_Main.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace WebARS.Models
         public DbSet<Airport> Airports { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<SeatTypes> SeatTypes { get; set; }
     }
 }
