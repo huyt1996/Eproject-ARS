@@ -1,0 +1,39 @@
+﻿body {
+    background: #e6e6ff;
+    font-family: 'Encode Sans', sans-serif;
+}
+/* navigation bar */
+#scanfcode {
+    border-radius: 0px;
+    background: #fff;
+    font-size: 17px;
+}
+/* logo or main heading */
+#logo {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #00004d;
+    letter-spacing: 2px;
+}
+/* navigation links*/
+
+/* navigation link with right border */
+#first-link {
+    padding-right: 6px;
+    border-right: solid 1px #ccc;
+}
+/* sign up link button and toggle button */
+#button-link, #toogle-button {
+    color: #f2f2f2;
+    border-style: solid;
+    border-width: 0px;
+    border-color: rgba(0,0,0,.2);
+    border-radius: 8px;
+    background-color: #fa6a48;
+    line-height: 10px;
+}
+
+    #button-link a {
+        color: #f2f2f2;
+    }
+
