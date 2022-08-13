@@ -6,14 +6,14 @@ namespace ARS_Main.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addTable : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class ARSDbv1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ARSDbv1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202208120906341_addTable"; }
+            get { return "202208130924077_ARSDb-v1"; }
         }
         
         string IMigrationMetadata.Source

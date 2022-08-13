@@ -189,9 +189,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202208120906341_addTable.cs" />
-    <Compile Include="Migrations\202208120906341_addTable.Designer.cs">
-      <DependentUpon>202208120906341_addTable.cs</DependentUpon>
+    <Compile Include="Migrations\202208130924077_ARSDb-v1.cs" />
+    <Compile Include="Migrations\202208130924077_ARSDb-v1.Designer.cs">
+      <DependentUpon>202208130924077_ARSDb-v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -704,8 +704,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202208120906341_addTable.resx">
-      <DependentUpon>202208120906341_addTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202208130924077_ARSDb-v1.resx">
+      <DependentUpon>202208130924077_ARSDb-v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

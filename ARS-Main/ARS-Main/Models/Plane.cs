@@ -24,31 +24,87 @@ namespace ARS_Main.Models
         public string Password { get; set; }
     }
 
+    [Table("TblUserAccount")]
+    public class UserAccount
+    {
+        [Key]
+        public int UserID { get; set; }
+
+        [Required(ErrorMessage = "First Name is required"), MinLength(3), StringLength(20)]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Last Name is required"), MinLength(3), StringLength(20)]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Email is required"), DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "UserName is required"), MinLength(3), StringLength(20), RegularExpression(@"^\([a-zA-z0-9 \.\&\'\-]+)$", ErrorMessage = "Must be alpha numeric")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Password is required"), DataType(DataType.Password), MinLength(3), StringLength(20)]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "Age is required"), Range(18, 150)]
+        public int Age { get; set; }
+
+        [Required(ErrorMessage = "Phone number is required"), RegularExpression(@"^([0-9]{11})$", ErrorMessage = "Phone number is invalid")]
+        public string PhoneNumber { get; set; }
+
+        [Required(ErrorMessage = "Cnic  is required"), RegularExpression(@"^([0-9]{11})$", ErrorMessage = "CNIC NUM is incorrect")]
+        public string Cnic { get; set; }
+    }
+
     public class AeroPlaneInfo
     {
         [Key]
-        public int Planeid { get; set; }
+        public int PlaneID { get; set; }
 
         [Display(Name = "Aero Plane Name")]
-        [Required(ErrorMessage = "Capacity req")]
+        [Required(ErrorMessage = "Aeroplane name req")]
+        [MaxLength(30, ErrorMessage = "Max 30 char allowed")]
         public string APlaneName { get; set; }
 
         [Display(Name = "Seating Capacity")]
-        [Required(ErrorMessage = "Aeroplane name req")]
-        public string SeatingCapacity { get; set; }
+        [Required(ErrorMessage = "Capacity req")]
+        public int SeatingCapacity { get; set; }
 
         [Display(Name = "Price")]
         [Required(ErrorMessage = "Price req")]
         public float Price { get; set; }
+
+        public virtual ICollection<TicketReserve_tbl> TicketReserve_Tbls { get; set; }
     }
 
     [Table("TblFlightBook")]
     public class FlightBooking
     {
         [Key]
-        public int bid { get; set; }
+        public int Bid { get; set; }
 
-        [Display(Name = "From City")]
+        [Required, Display(Name = "Customer Name")]
+        public string bCusName { get; set; }
+
+        [Required, Display(Name = "Customer Address")]
+        public string bCusAddress { get; set; }
+
+        [Required, Display(Name = "Customer Email")]
+        public string bCusEmail { get; set; }
+
+        [Required, Display(Name = "No Of Seats")]
+        public string bCusSeats { get; set; }
+
+        [Required, Display(Name = "Customer Phone Number")]
+        public string bCusPhoneNum { get; set; }
+
+        [Required, Display(Name = "CNIC")]
+        public string bCusCnic { get; set; }
+
+        public int ResID { get; set; }
+
+        public virtual ICollection<TicketReserve_tbl> TicketReserve_Tbls { get; set; }
+
+        /*[Display(Name = "From City")]
         [Required(ErrorMessage = "From City req")]
         [StringLength(40, ErrorMessage="Max 40 char allowed")]
         public string From { get; set; }
@@ -71,7 +127,35 @@ namespace ARS_Main.Models
 
         [Display(Name="Seat Type")]
         [StringLength(25)]
-        public string SeatType { get; set; }
+        public string SeatType { get; set; }*/
+    }
+    public class TicketReserve_tbl
+    {
+        [Key]
+        public int ResID { get;  }
+
+        [Required, Display(Name = "From City")]
+        public string ResFrom { get; set; }
+
+        [Required, Display(Name = "To City")]
+        public string ResTo { get; set; }
+
+        [Required, Display(Name = "Departure Date")]
+        public string ResDepDate { get; set; }
+
+        [Required, Display(Name = "Flight Time")]
+        public string ResTime { get; set; }
+
+        [Required, Display(Name = "Plane No: ")]
+        public string PlaneId { get; set; }
+
+        public virtual AeroPlaneInfo Plane_tbls { get; set; }
+
+        [Required, Display(Name = "Seats Available")]
+        public int PlaneSeat { get; set; }
+
+        [Required, Display(Name = "Price: ")]
+        public float ResTicketPrice { get; set; }
 
     }
 

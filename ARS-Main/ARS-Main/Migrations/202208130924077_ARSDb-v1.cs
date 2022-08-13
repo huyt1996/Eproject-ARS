@@ -3,10 +3,20 @@ namespace ARS_Main.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class addTable : DbMigration
+    public partial class ARSDbv1 : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.TblAdminLogin",
+                c => new
+                    {
+                        AdminId = c.Int(nullable: false, identity: true),
+                        AdminName = c.String(nullable: false, maxLength: 10),
+                        Password = c.String(nullable: false, maxLength: 10),
+                    })
+                .PrimaryKey(t => t.AdminId);
+            
             CreateTable(
                 "dbo.TblFlightBook",
                 c => new
@@ -56,6 +66,27 @@ namespace ARS_Main.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.RegisterViewModels",
+                c => new
+                    {
+                        UserId = c.Int(nullable: false, identity: true),
+                        UserRoles = c.String(),
+                        UserName = c.String(nullable: false),
+                        FirstName = c.String(nullable: false),
+                        LastName = c.String(nullable: false),
+                        Address = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        PhoneNumber = c.String(nullable: false),
+                        Password = c.String(nullable: false, maxLength: 100),
+                        ConfirmPassword = c.String(),
+                        Gender = c.Int(nullable: false),
+                        Age = c.Int(nullable: false),
+                        CreditCardNumber = c.String(nullable: false),
+                        SkyMile = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.UserId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -121,10 +152,12 @@ namespace ARS_Main.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.RegisterViewModels");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AeroPlaneInfoes");
             DropTable("dbo.TblFlightBook");
+            DropTable("dbo.TblAdminLogin");
         }
     }
 }

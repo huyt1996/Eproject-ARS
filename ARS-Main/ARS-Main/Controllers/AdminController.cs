@@ -7,25 +7,36 @@ using ARS_Main.Models;
 
 namespace ARS_Main.Controllers
 {
+    
     public class AdminController : Controller
     {
         ApplicationDbContext c = new ApplicationDbContext();
+        //Get: Admin
         public ActionResult Index()
         {
             return View();
         }
+        [HttpGet]
         public ActionResult AdminLogin()
         {
-            return View();
+            if(Session["u"]!=null)
+            {
+                return RedirectToAction("DeshBoard");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpPost]
         public ActionResult AdminLogin(AdminLogin l)
         {
-            var x = c.AdminLogins.Where(a => a.AdminName == l.AdminName && a.Password == l.Password).ToList();
+            var x = c.AdminLogins.Where(a => a.AdminName == l.AdminName && a.Password == l.Password).FirstOrDefault();
             if(x!=null)
             {
-                return RedirectToAction("DeshBoard");
+                Session["u"] = l.AdminName;
+                return RedirectToAction("DashBoard");
             }
             else
             {
@@ -33,7 +44,7 @@ namespace ARS_Main.Controllers
             }
             return View();
         }
-        public ActionResult DeshBoard()
+        public ActionResult DashBoard()
         {
 
             return View();
