@@ -66,7 +66,6 @@ namespace ARS_Main.Models
         [Key]
         public int UserId { get; set; }
 
-        [Required]
         [Display(Name = "UserRoles")]
         public string UserRoles { get; set; }
 

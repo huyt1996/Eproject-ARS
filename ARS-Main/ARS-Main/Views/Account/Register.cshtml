@@ -3,6 +3,7 @@
 @model ARS_Main.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_VietUserLayoutPage.cshtml";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -80,13 +81,13 @@
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.Label("user Role", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @*@Html.DropDownList("Name")*@
+            //Html.DropDownList("Name")
             @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ")
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -96,6 +97,3 @@
 
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

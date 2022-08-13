@@ -7,7 +7,22 @@ using System.Web;
 
 namespace ARS_Main.Models
 {
-    //[Table("TblAdminLogic")]
+    [Table("TblAdminLogin")]
+    public class AdminLogin
+    {
+        [Key]
+        public int AdminId { get; set; }
+
+        [Display(Name = "User Name")]
+        [Required(ErrorMessage = "User name required")]
+        [MinLength(3, ErrorMessage ="Min 3 Char Req"), MaxLength(10, ErrorMessage ="Max 10 Char allow")]
+        public string AdminName { get; set; }
+
+        [Required(ErrorMessage = "Password required")]
+        [DataType(DataType.Password)]
+        [MinLength(5, ErrorMessage = "Min 3 Char Req"), MaxLength(10, ErrorMessage = "Max 10 Char allow")]
+        public string Password { get; set; }
+    }
 
     public class AeroPlaneInfo
     {

@@ -24,6 +24,7 @@ namespace ARS_Main.Models
         public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        public DbSet<AdminLogin> AdminLogins { get; set; }
         public DbSet<RegisterViewModel> UserLogins { get; set; }
         public DbSet<AeroPlaneInfo> PlaneInfo { get; set; }
         public DbSet<FlightBooking> FlightBookings { get; set; }
