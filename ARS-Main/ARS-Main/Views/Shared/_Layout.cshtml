@@ -25,7 +25,22 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Role", "Index", "Role")</li>
+                    <li class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Manager
+                        </a>
+                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           <li class="dropdown-item">@Html.ActionLink("AirplaneTypes", "Create", "AirplaneTypes")</li>
+                          
+                           <li class="dropdown-item">@Html.ActionLink("Airplanes", "Create", "Airplanes")</li>
+                           
+                           <li class="dropdown-item">@Html.ActionLink("Flights", "Create", "Flights")</li>
+                           <li class="dropdown-item">@Html.ActionLink("FlightSchedules", "Create", "FlightSchedules")</li>
+                       </ul>
+
+                    </li>
                 </ul>
+                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

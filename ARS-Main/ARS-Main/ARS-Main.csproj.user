@@ -15,13 +15,22 @@
     <WebStackScaffolding_IsLayoutPageSelected>True</WebStackScaffolding_IsLayoutPageSelected>
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
+<<<<<<< HEAD
     <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_UserLayoutPage.cshtml</WebStackScaffolding_LayoutPageFile>
+=======
+    <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_Layout.cshtml</WebStackScaffolding_LayoutPageFile>
+>>>>>>> 5b77f5f3009c1d52d4d559490187fcc6f3dae8b2
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <View_SelectedScaffolderID>MvcViewScaffolder</View_SelectedScaffolderID>
     <View_SelectedScaffolderCategoryPath>root/Common/MVC/View</View_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
+<<<<<<< HEAD
     <WebStackScaffolding_DbContextTypeFullName>ARS_Main.Models.ApplicationDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_DbContextDialogWidth>600</WebStackScaffolding_DbContextDialogWidth>
+=======
+    <ProjectView>ProjectFiles</ProjectView>
+    <WebStackScaffolding_DbContextTypeFullName>WebARS.Models.MyDbConect</WebStackScaffolding_DbContextTypeFullName>
+>>>>>>> 5b77f5f3009c1d52d4d559490187fcc6f3dae8b2
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
   </PropertyGroup>
   <ProjectExtensions>

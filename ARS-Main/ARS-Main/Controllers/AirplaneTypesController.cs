@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -9,33 +10,12 @@ using WebARS.Models;
 
 namespace ARS_Main.Controllers
 {
-    public class HomeController : Controller
+    public class AirplaneTypesController : Controller
     {
         private MyDbConect db = new MyDbConect();
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        //    AIRPLANE TYPES 
-        
 
         // GET: AirplaneTypes
-        public ActionResult IndexAirplaneTypes()
+        public ActionResult Index()
         {
             return View(db.AirplaneTypes.ToList());
         }

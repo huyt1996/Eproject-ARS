@@ -1,0 +1,43 @@
+﻿@model WebARS.Models.FlightLog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FlightLog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Flight.FlightNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Flight.FlightNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightSchedule.From)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightSchedule.From)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
