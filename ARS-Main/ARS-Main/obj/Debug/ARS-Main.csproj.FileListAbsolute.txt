@@ -230,5 +230,5 @@ C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debu
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.csproj.CopyComplete
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.dll
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.pdb
-C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS_Main.Migrations.ARSDbv1.resources
+C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS_Main.Migrations.ARSV2.resources
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.csproj.GenerateResource.cache

@@ -181,7 +181,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AeroPlaneController.cs" />
+    <Compile Include="Controllers\FlightBookingController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
@@ -189,9 +190,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202208130924077_ARSDb-v1.cs" />
-    <Compile Include="Migrations\202208130924077_ARSDb-v1.Designer.cs">
-      <DependentUpon>202208130924077_ARSDb-v1.cs</DependentUpon>
+    <Compile Include="Migrations\202208150041578_ARS-V2.cs" />
+    <Compile Include="Migrations\202208150041578_ARS-V2.Designer.cs">
+      <DependentUpon>202208150041578_ARS-V2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -672,7 +673,6 @@
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutPage.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\DeshBoard.cshtml" />
     <Content Include="Views\Admin\AdminLogin.cshtml" />
     <Content Include="Views\Shared\_UserLayoutPage.cshtml" />
     <Content Include="Views\UserAccounts\Create.cshtml" />
@@ -681,6 +681,17 @@
     <Content Include="Views\UserAccounts\Edit.cshtml" />
     <Content Include="Views\UserAccounts\Index.cshtml" />
     <Content Include="Views\Shared\_VietUserLayoutPage.cshtml" />
+    <Content Include="Views\Admin\DashBoard.cshtml" />
+    <Content Include="Views\AeroPlane\Create.cshtml" />
+    <Content Include="Views\AeroPlane\Delete.cshtml" />
+    <Content Include="Views\AeroPlane\Details.cshtml" />
+    <Content Include="Views\AeroPlane\Edit.cshtml" />
+    <Content Include="Views\AeroPlane\Index.cshtml" />
+    <Content Include="Views\FlightBooking\Create.cshtml" />
+    <Content Include="Views\FlightBooking\Delete.cshtml" />
+    <Content Include="Views\FlightBooking\Details.cshtml" />
+    <Content Include="Views\FlightBooking\Edit.cshtml" />
+    <Content Include="Views\FlightBooking\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -704,8 +715,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202208130924077_ARSDb-v1.resx">
-      <DependentUpon>202208130924077_ARSDb-v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202208150041578_ARS-V2.resx">
+      <DependentUpon>202208150041578_ARS-V2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

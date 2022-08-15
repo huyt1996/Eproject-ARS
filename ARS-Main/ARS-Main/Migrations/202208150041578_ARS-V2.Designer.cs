@@ -7,13 +7,13 @@ namespace ARS_Main.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ARSDbv1 : IMigrationMetadata
+    public sealed partial class ARSV2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ARSDbv1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ARSV2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202208130924077_ARSDb-v1"; }
+            get { return "202208150041578_ARS-V2"; }
         }
         
         string IMigrationMetadata.Source

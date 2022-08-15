@@ -21,7 +21,7 @@ namespace ARS_Main.Controllers
         {
             if(Session["u"]!=null)
             {
-                return RedirectToAction("DeshBoard");
+                return RedirectToAction("DashBoard");
             }
             else
             {
@@ -41,8 +41,8 @@ namespace ARS_Main.Controllers
             else
             {
                 ViewBag.m = "Wrong User id or Password";
+                return View();
             }
-            return View();
         }
         public ActionResult DashBoard()
         {

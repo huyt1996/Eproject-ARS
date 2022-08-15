@@ -132,7 +132,7 @@ namespace ARS_Main.Models
     public class TicketReserve_tbl
     {
         [Key]
-        public int ResID { get;  }
+        public int ResID { get; set; }
 
         [Required, Display(Name = "From City")]
         public string ResFrom { get; set; }
