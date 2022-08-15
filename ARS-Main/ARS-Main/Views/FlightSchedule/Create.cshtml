@@ -231,16 +231,32 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.ResFrom, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.ResFrom, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ResFrom, "", new { @class = "text-danger" })
+                            @*@Html.EditorFor(model => model.ResFrom, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ResFrom, "", new { @class = "text-danger" })*@
+                            <select name="ResFrom">
+                                <option>Ha Noi</option>
+                                <option>Da Nang</option>
+                                <option>Ho Chi Minh</option>
+                                <option>Tokyo</option>
+                                <option>Paris</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.ResFrom)
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.ResTo, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.ResTo, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ResTo, "", new { @class = "text-danger" })
+                            @*@Html.EditorFor(model => model.ResTo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ResTo, "", new { @class = "text-danger" })*@
+                            <select name="ResTo">
+                                <option>Ha Noi</option>
+                                <option>Da Nang</option>
+                                <option>Ho Chi Minh</option>
+                                <option>Tokyo</option>
+                                <option>Paris</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.ResTo)
                         </div>
                     </div>
 
