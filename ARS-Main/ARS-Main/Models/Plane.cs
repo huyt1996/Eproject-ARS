@@ -157,6 +157,11 @@ namespace ARS_Main.Models
         [Required, Display(Name = "Price: ")]
         public float ResTicketPrice { get; set; }
 
+        [Required, Display(Name = "Plane Type: ")]
+        public string ResPlaneType { get; set; }
+
+        public virtual ICollection<FlightBooking> tblFlightBookings { get; set; }
+
     }
 
 }

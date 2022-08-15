@@ -25,13 +25,16 @@ namespace ARS_Main.Models
         {
         }
         public DbSet<AdminLogin> AdminLogins { get; set; }
+        public DbSet<UserAccount> UserAccounts { get; set; }
         public DbSet<RegisterViewModel> UserLogins { get; set; }
         public DbSet<AeroPlaneInfo> PlaneInfos { get; set; }
         public DbSet<FlightBooking> FlightBookings { get; set; }
+        public DbSet<TicketReserve_tbl> TicketReserves { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
     }
 }

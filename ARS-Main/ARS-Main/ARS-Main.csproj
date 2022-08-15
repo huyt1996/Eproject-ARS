@@ -183,16 +183,18 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AeroPlaneController.cs" />
     <Compile Include="Controllers\FlightBookingController.cs" />
+    <Compile Include="Controllers\FlightScheduleController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\TicketReserveController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202208150041578_ARS-V2.cs" />
-    <Compile Include="Migrations\202208150041578_ARS-V2.Designer.cs">
-      <DependentUpon>202208150041578_ARS-V2.cs</DependentUpon>
+    <Compile Include="Migrations\202208150341092_ARS-V5.cs" />
+    <Compile Include="Migrations\202208150341092_ARS-V5.Designer.cs">
+      <DependentUpon>202208150341092_ARS-V5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -692,6 +694,16 @@
     <Content Include="Views\FlightBooking\Details.cshtml" />
     <Content Include="Views\FlightBooking\Edit.cshtml" />
     <Content Include="Views\FlightBooking\Index.cshtml" />
+    <Content Include="Views\TicketReserve\Create.cshtml" />
+    <Content Include="Views\TicketReserve\Delete.cshtml" />
+    <Content Include="Views\TicketReserve\Details.cshtml" />
+    <Content Include="Views\TicketReserve\Edit.cshtml" />
+    <Content Include="Views\TicketReserve\Index.cshtml" />
+    <Content Include="Views\FlightSchedule\Create.cshtml" />
+    <Content Include="Views\FlightSchedule\Delete.cshtml" />
+    <Content Include="Views\FlightSchedule\Details.cshtml" />
+    <Content Include="Views\FlightSchedule\Edit.cshtml" />
+    <Content Include="Views\FlightSchedule\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -715,8 +727,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202208150041578_ARS-V2.resx">
-      <DependentUpon>202208150041578_ARS-V2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202208150341092_ARS-V5.resx">
+      <DependentUpon>202208150341092_ARS-V5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

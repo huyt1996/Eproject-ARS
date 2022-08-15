@@ -17,7 +17,15 @@ namespace ARS_Main.Controllers
         // GET: AeroPlane
         public ActionResult Index()
         {
-            return View(db.PlaneInfos.ToList());
+            if (Session["u"] != null)
+            {
+                return View(db.PlaneInfos.ToList());               
+            }
+            else
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+        
         }
 
         // GET: AeroPlane/Details/5
@@ -38,7 +46,15 @@ namespace ARS_Main.Controllers
         // GET: AeroPlane/Create
         public ActionResult Create()
         {
-            return View();
+            if (Session["u"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("AdminLogin", "Admin");
+            }
+            
         }
 
         // POST: AeroPlane/Create
