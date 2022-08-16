@@ -1,0 +1,129 @@
+﻿@model IEnumerable<ARS_Main.Models.TicketReserve_tbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VietUserLayoutPage.cshtml";
+}
+
+<center><h1></h1></center>
+
+
+@{ 
+    Html.BeginForm("Search", "FlightBook", "Index", FormMethod.Post);
+    
+    
+        <section id="first-tab-group" class="tabgroup">
+            <div id="tab1">
+                <div class="submit-form">
+                    <h4>Check availability for <em>direction</em>:</h4>
+                    <form id="form-submit" action="#" method="get">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <label for="from">From:</label>
+                                    <datalist id="rcity">
+                                        @foreach (var item in ViewBag.dcity)
+                                        {
+                                            <option>@item</option>
+                                        }
+                                    </datalist>
+                                    <input type="text" name="cityfrom" class="city1" placeholder="Type Departure City" required="" list="rcity" />
+                                    @*<select required name='from' onchange='this.form.()'>
+                                        <option value="">Select a location...</option>
+
+                                    </select>*@
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <label for="to">To:</label>
+                                    <datalist id="acity">
+                                        @foreach (var item in ViewBag.acity)
+                                        {
+                                            <option>@item</option>
+                                        }
+                                    </datalist>
+                                    <input type="text" name="cityto" class="city2" placeholder="Type Destination City" required="" list="acity"/>
+                                    @*<select required name='to' onchange='this.form.()'>
+                                        <option value="">Select a location...</option>
+
+                                    </select>*@
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <label for="departure">Departure date:</label>
+                                    <input name="date1" type="date" onfocus="this.value = ''" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="" />
+                                    @*<input name="departure" type="text" class="form-control date" id="deparure" placeholder="Select date..." required="" onchange='this.form.()'>*@
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <label for="return">Return date:</label>
+                                    <input name="return" type="text" class="form-control date" id="return" placeholder="Select date..." required="" onchange='this.form.()'>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="radio-select">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <label for="round">Round</label>
+                                            <input type="radio" name="trip" id="round" value="round" required="required" onchange='this.form.()'>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <label for="oneway">Oneway</label>
+                                            <input type="radio" name="trip" id="oneway" value="one-way" required="required" onchange='this.form.()'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="btn">Order Ticket Now</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+   
+
+    @*<center>
+        <table>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Date</th>
+            </tr>
+            <tr>
+                <td>
+                    <datalist id="rcity">
+                        @foreach (var item in ViewBag.dcity)
+                        {
+                            <option>@item</option>
+                        }
+                    </datalist>
+                    <input type="text" name="cityfrom" class="city1" placeholder="Type Departure City" required="" list="rcity"/>
+                </td>
+                <td>
+                    <datalist id="acity">
+                        @foreach (var item in ViewBag.acity)
+                        {
+                            <option>@item</option>
+                        }
+                    </datalist>
+                    <input type="text" name="cityto" class="city2" placeholder="Type Destination City" required="" list="acity"/>
+                </td>
+                <td>
+                    <input name="date1" type="date" onfocus="this.value = ''" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="" />
+                </td>
+            </tr>
+        </table>
+    </center>
+
+    <div class="clear"></div>
+
+    <input type="submit" value="Search Flights" class="btn-block" />*@
+}
+
