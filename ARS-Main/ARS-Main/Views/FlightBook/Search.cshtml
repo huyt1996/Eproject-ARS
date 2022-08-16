@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ARS_Main.Models.AeroPlaneInfo>
+
+@{
+    ViewBag.Title = "Search Result";
+    Layout = "~/Views/Shared/_VietUserLayoutPage.cshtml";
+}
+
+<h2>Search Results</h2>
+
+<center>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Plane Name</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Seats Available</th>
+                <th>Flight Time</th>
+                <th>Price</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in ViewBag.ss)
+            {
+                <tr>
+                    <td>
+                        @{ 
+                            int pi = int.Parse(item.PlaneId.ToString());
+                            var dd = new ARS_Main.Models.ApplicationDbContext();
+                            var pname = dd.PlaneInfos.Where(a => a.PlaneID == pi).FirstOrDefault();
+                            @pname.APlaneName
+                        }
+                    </td>
+
+                    <td>@item.ResFrom</td>
+                    <td>@item.ResTo</td>
+                    <td>@item.PlaneSeat</td>
+                    <td>@item.ResTime</td>
+                    <td>@item.ResTicketPrice</td>
+                    <td>
+                        @if (Session["UserId"] == null)
+                        { 
+                            <a href="@Url.Action("Login", "Account")" class="btn btn-success">Please login for Booking</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Booking", "FlightBook", new { @fid = @item.ResID})" class="btn btn-success">Book Flight Now</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</center>
+

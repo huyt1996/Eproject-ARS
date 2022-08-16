@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ARS_Main.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ARS_Main.Controllers
 {
@@ -17,13 +19,13 @@ namespace ARS_Main.Controllers
         // GET: AeroPlane
         public ActionResult Index()
         {
-            if (Session["u"] != null)
+            if (isAdminUser())
             {
                 return View(db.PlaneInfos.ToList());               
             }
             else
             {
-                return RedirectToAction("AdminLogin", "Admin");
+                return RedirectToAction("Login", "Account");
             }
         
         }
@@ -46,13 +48,13 @@ namespace ARS_Main.Controllers
         // GET: AeroPlane/Create
         public ActionResult Create()
         {
-            if (Session["u"] != null)
+            if (isAdminUser())
             {
                 return View();
             }
             else
             {
-                return RedirectToAction("AdminLogin", "Admin");
+                return RedirectToAction("Login", "Account");
             }
             
         }
@@ -139,6 +141,25 @@ namespace ARS_Main.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public Boolean isAdminUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ApplicationDbContext context = new ApplicationDbContext();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Admin")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }

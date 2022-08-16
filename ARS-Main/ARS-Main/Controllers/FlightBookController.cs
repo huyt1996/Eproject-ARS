@@ -18,7 +18,7 @@ namespace ARS_Main.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult search( string cityto, string cityfrom, string date1)
+        public ActionResult Search( string cityto, string cityfrom, string date1)
         {
             var c = db.TicketReserves.Where(l => l.ResTo.Equals(cityto) && l.ResFrom.Equals(cityfrom) && l.ResDepDate.Equals(date1));
             ViewBag.ss = c;

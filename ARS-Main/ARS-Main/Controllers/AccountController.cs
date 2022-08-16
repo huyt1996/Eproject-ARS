@@ -83,7 +83,7 @@ namespace ARS_Main.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "User"); ;
+                    return RedirectToAction("Index", "Admin"); ;
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -403,7 +403,7 @@ namespace ARS_Main.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "FlightBook");
         }
 
         //
