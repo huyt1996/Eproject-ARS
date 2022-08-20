@@ -21,7 +21,7 @@ namespace ARS_Main.Controllers
         {
             if (isAdminUser())
             {
-                return View(db.PlaneInfos.ToList());               
+                return View(db.Planes.ToList());               
             }
             else
             {
@@ -37,12 +37,12 @@ namespace ARS_Main.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AeroPlaneInfo aeroPlaneInfo = db.PlaneInfos.Find(id);
-            if (aeroPlaneInfo == null)
+            Plane PlaneInfo = db.Planes.Find(id);
+            if (PlaneInfo == null)
             {
                 return HttpNotFound();
             }
-            return View(aeroPlaneInfo);
+            return View(PlaneInfo);
         }
 
         // GET: AeroPlane/Create
@@ -64,17 +64,17 @@ namespace ARS_Main.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Planeid,APlaneName,SeatingCapacity,Price")] AeroPlaneInfo aeroPlaneInfo)
+        public ActionResult Create([Bind(Include = "Planeid,APlaneName,SeatingCapacity,Price")] Plane PlaneInfo)
         {
             if (ModelState.IsValid)
             {
-                db.PlaneInfos.Add(aeroPlaneInfo);
+                db.Planes.Add(PlaneInfo);
                 db.SaveChanges();
                 ViewBag.m = "Record Saved";
                 return View("");
             }
 
-            return View(aeroPlaneInfo);
+            return View(PlaneInfo);
         }
 
         // GET: AeroPlane/Edit/5
@@ -84,12 +84,12 @@ namespace ARS_Main.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AeroPlaneInfo aeroPlaneInfo = db.PlaneInfos.Find(id);
-            if (aeroPlaneInfo == null)
+            Plane PlaneInfo = db.Planes.Find(id);
+            if (PlaneInfo == null)
             {
                 return HttpNotFound();
             }
-            return View(aeroPlaneInfo);
+            return View(PlaneInfo);
         }
 
         // POST: AeroPlane/Edit/5
@@ -97,15 +97,15 @@ namespace ARS_Main.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Planeid,APlaneName,SeatingCapacity,Price")] AeroPlaneInfo aeroPlaneInfo)
+        public ActionResult Edit([Bind(Include = "Planeid,APlaneName,SeatingCapacity,Price")] Plane PlaneInfo)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(aeroPlaneInfo).State = EntityState.Modified;
+                db.Entry(PlaneInfo).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(aeroPlaneInfo);
+            return View(PlaneInfo);
         }
 
         // GET: AeroPlane/Delete/5
@@ -115,12 +115,12 @@ namespace ARS_Main.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AeroPlaneInfo aeroPlaneInfo = db.PlaneInfos.Find(id);
-            if (aeroPlaneInfo == null)
+            Plane PlaneInfo = db.Planes.Find(id);
+            if (PlaneInfo == null)
             {
                 return HttpNotFound();
             }
-            return View(aeroPlaneInfo);
+            return View(PlaneInfo);
         }
 
         // POST: AeroPlane/Delete/5
@@ -128,8 +128,8 @@ namespace ARS_Main.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AeroPlaneInfo aeroPlaneInfo = db.PlaneInfos.Find(id);
-            db.PlaneInfos.Remove(aeroPlaneInfo);
+            Plane aeroPlaneInfo = db.Planes.Find(id);
+            db.Planes.Remove(aeroPlaneInfo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

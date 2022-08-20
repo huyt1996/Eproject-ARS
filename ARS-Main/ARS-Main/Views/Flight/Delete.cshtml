@@ -1,7 +1,7 @@
-﻿@model IEnumerable<ARS_Main.Models.TicketReserve_tbl>
+﻿@model ARS_Main.Models.Flight
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
 }
 <div class="sticky-header header-section ">
@@ -218,76 +218,89 @@
         <h2 class="title1">Blank Page</h2>
         <div class="blank-page widget-shadow scroll" id="style-2 div1">
 
-            <h2>Index</h2>
+            <h2>Delete</h2>
 
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ResFrom)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ResTo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ResDepDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ResTime)
-                    </th>
-                    <th>
+            <h3>Are you sure you want to delete this?</h3>
+            <div>
+                <h4>Flight</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.From)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.From)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.To)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.To)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DepDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DepDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DepTime)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DepTime)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ArDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ArDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ArTime)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ArTime)
+                    </dd>
+
+                    <dt>
                         @Html.DisplayNameFor(model => model.PlaneId)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PlaneSeat)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ResTicketPrice)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ResPlaneType)
-                    </th>
-                    <th></th>
-                </tr>
+                    </dt>
 
-                @foreach (var item in Model)
+                    <dd>
+                        @Html.DisplayFor(model => model.PlaneId)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Price)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResFrom)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResTo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResDepDate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PlaneId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PlaneSeat)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResTicketPrice)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ResPlaneType)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ResID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.ResID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ResID })
-                        </td>
-                    </tr>
-                }
+                    @Html.AntiForgeryToken()
 
-            </table>
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+            </div>
         </div>
     </div>
 </div>

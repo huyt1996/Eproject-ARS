@@ -7,113 +7,126 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ARS_Main.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ARS_Main.Controllers
 {
-    public class FlightScheduleController : Controller
+    public class PlaneController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: FlightSchedule
+        // GET: Plane
         public ActionResult Index()
         {
-            return View(db.TicketReserves.ToList());
+            if (!isAdminUser())
+            {
+                return View(db.Planes.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
-        // GET: FlightSchedule/Details/5
+        // GET: Plane/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketReserve_tbl ticketReserve_tbl = db.TicketReserves.Find(id);
-            if (ticketReserve_tbl == null)
+            Plane plane = db.Planes.Find(id);
+            if (plane == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketReserve_tbl);
+            return View(plane);
         }
 
-        // GET: FlightSchedule/Create
+        // GET: Plane/Create
         public ActionResult Create()
         {
-            ViewBag.PlaneId = new SelectList(db.PlaneInfos, "PlaneID", "APlaneName");
-            return View();
+            if (!isAdminUser())
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
-        // POST: FlightSchedule/Create
+        // POST: Plane/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ResID,ResFrom,ResTo,ResDepDate,ResTime,PlaneId,PlaneSeat,ResTicketPrice,ResPlaneType")] TicketReserve_tbl ticketReserve_tbl)
+        public ActionResult Create([Bind(Include = "PlaneID,PlaneName,PlaneNumber,SeatingCapacity")] Plane plane)
         {
-            ViewBag.PlaneId = new SelectList(db.PlaneInfos, "PlaneID", "APlaneName");
             if (ModelState.IsValid)
             {
-                db.TicketReserves.Add(ticketReserve_tbl);
+                db.Planes.Add(plane);
                 db.SaveChanges();
-                ViewBag.m = "Record Saved";
                 return RedirectToAction("Index");
             }
 
-            return View(ticketReserve_tbl);
+            return View(plane);
         }
 
-        // GET: FlightSchedule/Edit/5
+        // GET: Plane/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketReserve_tbl ticketReserve_tbl = db.TicketReserves.Find(id);
-            if (ticketReserve_tbl == null)
+            Plane plane = db.Planes.Find(id);
+            if (plane == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketReserve_tbl);
+            return View(plane);
         }
 
-        // POST: FlightSchedule/Edit/5
+        // POST: Plane/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ResID,ResFrom,ResTo,ResDepDate,ResTime,PlaneId,PlaneSeat,ResTicketPrice,ResPlaneType")] TicketReserve_tbl ticketReserve_tbl)
+        public ActionResult Edit([Bind(Include = "PlaneID,PlaneName,PlaneNumber,SeatingCapacity")] Plane plane)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ticketReserve_tbl).State = EntityState.Modified;
+                db.Entry(plane).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(ticketReserve_tbl);
+            return View(plane);
         }
 
-        // GET: FlightSchedule/Delete/5
+        // GET: Plane/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TicketReserve_tbl ticketReserve_tbl = db.TicketReserves.Find(id);
-            if (ticketReserve_tbl == null)
+            Plane plane = db.Planes.Find(id);
+            if (plane == null)
             {
                 return HttpNotFound();
             }
-            return View(ticketReserve_tbl);
+            return View(plane);
         }
 
-        // POST: FlightSchedule/Delete/5
+        // POST: Plane/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            TicketReserve_tbl ticketReserve_tbl = db.TicketReserves.Find(id);
-            db.TicketReserves.Remove(ticketReserve_tbl);
+            Plane plane = db.Planes.Find(id);
+            db.Planes.Remove(plane);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -125,6 +138,26 @@ namespace ARS_Main.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public Boolean isAdminUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ApplicationDbContext context = new ApplicationDbContext();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Admin")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }

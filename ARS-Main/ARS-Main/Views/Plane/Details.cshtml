@@ -1,7 +1,7 @@
-﻿@model ARS_Main.Models.TicketReserve_tbl
+﻿@model ARS_Main.Models.Plane
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
 }
 <div class="sticky-header header-section ">
@@ -218,112 +218,42 @@
         <h2 class="title1">Blank Page</h2>
         <div class="blank-page widget-shadow scroll" id="style-2 div1">
 
-            <h2>Create</h2>
-            <h3>@ViewBag.m</h3>
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
+            <h2>Details</h2>
 
-                <div class="form-horizontal">
-                    <h4>TicketReserve_tbl</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ResFrom, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @*@Html.EditorFor(model => model.ResFrom, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ResFrom, "", new { @class = "text-danger" })*@
-                            <select name="ResFrom">
-                                <option>Ha Noi</option>
-                                <option>Da Nang</option>
-                                <option>Ho Chi Minh</option>
-                                <option>Tokyo</option>
-                                <option>Paris</option>
-                            </select>
-                            @Html.ValidationMessageFor(model => model.ResFrom)
-                        </div>
-                    </div>
+            <div>
+                <h4>Plane</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PlaneName)
+                    </dt>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ResTo, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @*@Html.EditorFor(model => model.ResTo, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ResTo, "", new { @class = "text-danger" })*@
-                            <select name="ResTo">
-                                <option>Ha Noi</option>
-                                <option>Da Nang</option>
-                                <option>Ho Chi Minh</option>
-                                <option>Tokyo</option>
-                                <option>Paris</option>
-                            </select>
-                            @Html.ValidationMessageFor(model => model.ResTo)
-                        </div>
-                    </div>
+                    <dd>
+                        @Html.DisplayFor(model => model.PlaneName)
+                    </dd>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ResDepDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @*@Html.EditorFor(model => model.ResDepDate, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ResDepDate, "", new { @class = "text-danger" })*@
-                            <input type="date" name="ResDepDate" required />
-                            @Html.ValidationMessageFor(model => model.ResDepDate)
-                        </div>
-                    </div>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PlaneNumber)
+                    </dt>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ResTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @*@Html.EditorFor(model => model.ResTime, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ResTime, "", new { @class = "text-danger" })*@
-                            <input type="time" name="ResTime" required />
-                            @Html.ValidationMessageFor(model => model.ResTime)
-                        </div>
-                    </div>
+                    <dd>
+                        @Html.DisplayFor(model => model.PlaneNumber)
+                    </dd>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PlaneId, "PlaneId", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @*@Html.DropDownList("PlaneId", null, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.PlaneId, "", new { @class = "text-danger" })*@
-                            @Html.DropDownList("PlaneId", String.Empty)
-                            @Html.ValidationMessageFor(model => model.PlaneId)
-                        </div>
-                    </div>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SeatingCapacity)
+                    </dt>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.PlaneSeat, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.PlaneSeat, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.PlaneSeat, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                    <dd>
+                        @Html.DisplayFor(model => model.SeatingCapacity)
+                    </dd>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ResTicketPrice, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ResTicketPrice, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ResTicketPrice, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ResPlaneType, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.ResPlaneType, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ResPlaneType, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Create" class="btn btn-default" />
-                        </div>
-                    </div>
-                </div>
-            }
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.PlaneID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
         </div>
     </div>
 </div>
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>

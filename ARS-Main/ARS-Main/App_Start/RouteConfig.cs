@@ -16,7 +16,7 @@ namespace ARS_Main
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "FlightBook", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Flight", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

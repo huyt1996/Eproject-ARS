@@ -225,10 +225,11 @@ C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\bin\Micr
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\bin\Org.Mentalis.Security.Cryptography.xml
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\bin\Mono.Math.xml
-C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.csproj.AssemblyReference.cache
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.csproj.CoreCompileInputs.cache
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.csproj.CopyComplete
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.dll
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.pdb
-C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS_Main.Migrations.ARSV5.resources
+C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS_Main.Migrations.V1.resources
 C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.csproj.GenerateResource.cache
+C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS-Main.csproj.AssemblyReference.cache
+C:\Users\huyt1\OneDrive\Documents\GitHub\Eproject-ARS\ARS-Main\ARS-Main\obj\Debug\ARS_Main.Migrations.V2.resources

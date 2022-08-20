@@ -13,25 +13,17 @@ namespace ARS_Main.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            ViewBag.dcity = db.TicketReserves.Select(l => l.ResFrom).Distinct().ToList();
-            ViewBag.acity = db.TicketReserves.Select(l => l.ResTo).Distinct().ToList();
+            ViewBag.dcity = db.Flights.Select(l => l.From).Distinct().ToList();
+            ViewBag.acity = db.Flights.Select(l => l.To).Distinct().ToList();
             return View();
         }
         [HttpPost]
-        public ActionResult Search( string cityto, string cityfrom, string date1)
+        public ActionResult Search( string cityto, string cityfrom, string date1, string date2)
         {
-            var c = db.TicketReserves.Where(l => l.ResTo.Equals(cityto) && l.ResFrom.Equals(cityfrom) && l.ResDepDate.Equals(date1));
+            var c = db.Flights.Where(l => l.To.Equals(cityto) && l.From.Equals(cityfrom) && l.DepDate.Equals(date1) && l.ArDate.Equals(date2));
             ViewBag.ss = c;
             return View();
         }
 
-        public ActionResult Booking( string fid)
-        {
-            int ids = int.Parse(fid);
-            var a = db.TicketReserves.Where(l => l.ResID == ids).SingleOrDefault();
-            ViewBag.name = a.ResID;
-            ViewBag.id = fid;
-            return View();
-        }
     }
 }

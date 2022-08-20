@@ -15,7 +15,7 @@ namespace ARS_Main.Models
 
         [Display(Name = "User Name")]
         [Required(ErrorMessage = "User name required")]
-        [MinLength(3, ErrorMessage ="Min 3 Char Req"), MaxLength(10, ErrorMessage ="Max 10 Char allow")]
+        [MinLength(3, ErrorMessage = "Min 3 Char Req"), MaxLength(10, ErrorMessage = "Max 10 Char allow")]
         public string AdminName { get; set; }
 
         [Required(ErrorMessage = "Password required")]
@@ -24,7 +24,7 @@ namespace ARS_Main.Models
         public string Password { get; set; }
     }
 
-    [Table("TblUserAccount")]
+    /*[Table("TblUserAccount")]
     public class UserAccount
     {
         [Key]
@@ -53,115 +53,93 @@ namespace ARS_Main.Models
 
         [Required(ErrorMessage = "Cnic  is required"), RegularExpression(@"^([0-9]{11})$", ErrorMessage = "CNIC NUM is incorrect")]
         public string Cnic { get; set; }
-    }
+    }*/
 
-    public class AeroPlaneInfo
+    public class Plane
     {
         [Key]
         public int PlaneID { get; set; }
 
-        [Display(Name = "Aero Plane Name")]
-        [Required(ErrorMessage = "Aeroplane name req")]
+        [Display(Name = "Plane Name")]
+        [Required(ErrorMessage = "Plane name req")]
         [MaxLength(30, ErrorMessage = "Max 30 char allowed")]
-        public string APlaneName { get; set; }
+        public string PlaneName { get; set; }
 
-        [Display(Name = "Seating Capacity")]
+        [Required]
+        [Display(Name = "Plane Number")]
+        public String PlaneNumber { get; set; }
+
         [Required(ErrorMessage = "Capacity req")]
+        [Display(Name = "Seating Capacity")]
+        [Range(10, 200)]
         public int SeatingCapacity { get; set; }
 
-        [Display(Name = "Price")]
-        [Required(ErrorMessage = "Price req")]
-        public float Price { get; set; }
+        public List<Seat> BookedSeats { get; set; }
 
-        public virtual ICollection<TicketReserve_tbl> TicketReserve_Tbls { get; set; }
     }
 
-    [Table("TblFlightBook")]
-    public class FlightBooking
+    public class Flight
     {
         [Key]
-        public int Bid { get; set; }
+        public int ID { get; set; }
 
-        [Required, Display(Name = "Customer Name")]
-        public string bCusName { get; set; }
-
-        [Required, Display(Name = "Customer Address")]
-        public string bCusAddress { get; set; }
-
-        [Required, Display(Name = "Customer Email")]
-        public string bCusEmail { get; set; }
-
-        [Required, Display(Name = "No Of Seats")]
-        public string bCusSeats { get; set; }
-
-        [Required, Display(Name = "Customer Phone Number")]
-        public string bCusPhoneNum { get; set; }
-
-        [Required, Display(Name = "CNIC")]
-        public string bCusCnic { get; set; }
-
-        public int ResID { get; set; }
-
-        public virtual ICollection<TicketReserve_tbl> TicketReserve_Tbls { get; set; }
-
-        /*[Display(Name = "From City")]
-        [Required(ErrorMessage = "From City req")]
-        [StringLength(40, ErrorMessage="Max 40 char allowed")]
-        public string From { get; set; }
-
-        [Display(Name = "To City")]
-        [Required(ErrorMessage = "To City req")]
-        [StringLength(40, ErrorMessage = "Max 40 char allowed")]
-        public string To { get; set; }
-
-        [Display(Name = "Departure Date")]
-        [DataType(DataType.Date)]
-        public DateTime DDate { get; set; }
-
-        [Display(Name = "Departure Time")]
-        [StringLength(15)]
-        public string DTime { get; set; }
-
-        public int Planeid { get; set; }
-        public virtual AeroPlaneInfo PlaneInfo { get; set; }
-
-        [Display(Name="Seat Type")]
-        [StringLength(25)]
-        public string SeatType { get; set; }*/
-    }
-    public class TicketReserve_tbl
-    {
-        [Key]
-        public int ResID { get; set; }
-
-        [Required, Display(Name = "From City")]
-        public string ResFrom { get; set; }
-
-        [Required, Display(Name = "To City")]
-        public string ResTo { get; set; }
-
-        [Required, Display(Name = "Departure Date")]
-        public string ResDepDate { get; set; }
-
-        [Required, Display(Name = "Flight Time")]
-        public string ResTime { get; set; }
+        public virtual Plane Plane { get; set; }
 
         [Required, Display(Name = "Plane No: ")]
-        public string PlaneId { get; set; }
+        public int PlaneId { get; set; }
 
-        public virtual AeroPlaneInfo Plane_tbls { get; set; }
+        [Required, Display(Name = "From City")]
+        public string From { get; set; }
 
-        [Required, Display(Name = "Seats Available")]
-        public int PlaneSeat { get; set; }
+        [Required, Display(Name = "To City")]
+        public string To { get; set; }
 
+        [Required, Display(Name = "Departure Date")]
+        public string DepDate { get; set; }
+
+        [Required, Display(Name = "Departure Time")]
+        public string DepTime { get; set; }
+
+        [Required, Display(Name = "Arrival Date")]
+        public string ArDate { get; set; }
+
+        [Required, Display(Name = "Arrival Time")]
+        public string ArTime { get; set; }
+        
         [Required, Display(Name = "Price: ")]
-        public float ResTicketPrice { get; set; }
-
-        [Required, Display(Name = "Plane Type: ")]
-        public string ResPlaneType { get; set; }
-
-        public virtual ICollection<FlightBooking> tblFlightBookings { get; set; }
+        public float Price { get; set; }
 
     }
 
+    public class Seat
+    {
+        [Required]
+        public int Id { get; set; }
+
+        [Required]
+        public bool IsAvailable { get; set; }
+
+        [Required]
+        [Display(Name = "Seat Number")]
+        [Range(1, 200)]
+        public int SeatNumber { get; set; }
+
+        public virtual Passenger Passenger { get; set; }
+
+        [Required]
+        [Display(Name = "Passenger Name")]
+        public int PassengerId { get; set; }
+
+        [Required]
+        [Display(Name = "Booked Time")]
+        public String Time { get; set; }
+
+        public Seat()
+        {
+            this.IsAvailable = true;
+            this.Time = DateTime.Now.ToString();
+        }
+
+
+    }
 }

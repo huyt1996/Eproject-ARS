@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ARS_Main.Controllers
 {
-    
+
     public class AdminController : Controller
     {
         // GET: User
@@ -54,12 +54,13 @@ namespace ARS_Main.Controllers
             }
             return false;
         }
-       
-        
+
+
         public ActionResult DashBoard()
         {
 
             return View();
         }
-    }
+
+    }   
 }

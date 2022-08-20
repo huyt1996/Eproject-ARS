@@ -29,7 +29,7 @@ namespace ARS_Main
             if (!roleManager.RoleExists("Admin"))
             {
 
-                // first we create Admin rool    
+                // first we create Admin role 
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
@@ -52,7 +52,7 @@ namespace ARS_Main
                 }
             }
 
-            // creating Creating Manager role     
+            // Creating user role     
             if (!roleManager.RoleExists("User"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
@@ -61,14 +61,6 @@ namespace ARS_Main
 
             }
 
-            // creating Creating Employee role     
-            if (!roleManager.RoleExists("Guest"))
-            {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Guest";
-                roleManager.Create(role);
-
-            }
         }
     }
 }

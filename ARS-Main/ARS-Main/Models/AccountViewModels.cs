@@ -63,11 +63,8 @@ namespace ARS_Main.Models
 
     public class RegisterViewModel
     {
-        [Key]
-        public int UserId { get; set; }
-
-        [Display(Name = "UserRoles")]
-        public string UserRoles { get; set; }
+        [Display(Name = "UserRole")]
+        public string UserRole { get; set; }
 
         [Required(ErrorMessage = "You must provide a User Name")]
         [Display(Name = "User Name")]
@@ -154,9 +151,4 @@ namespace ARS_Main.Models
         public string Email { get; set; }
     }
 
-    public enum Gender
-    {
-        Male,
-        Female
-    }
 }

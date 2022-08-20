@@ -1,0 +1,65 @@
+﻿@model ARS_Main.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VietUserLayoutPage2.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h2>Information</h2>
+            <table class="table table-responsive table-condensed">
+                <tr>
+                    <td>Name</td>
+                    <td>@Model.UserName</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>@Model.FirstName</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>@Model.LastName</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>@Model.Address</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>@Model.Gender</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>@Model.PhoneNumber</td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td>@Model.Age</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>@Model.CreditCardNumber</td>
+                </tr>
+                <tr>
+                    <td>Sky Miles</td>
+                    <td>@Model.SkyMile</td>
+                </tr>
+            </table>
+
+            <div>
+                <br /><br />
+                <a href="@Url.Action("Booking", "Passengers", new { id = Model.Id })" class="btn btn-block btn-info">Booking</a>
+                <a href="@Url.Action("AddPhoneNumber", "Manage", new { id = Model.Id })" class="btn btn-block btn-warning">Change My Phone Number</a>
+                <a href="@Url.Action("ChangePassword", "Manage", new { id = Model.Id })" class="btn btn-block btn-success">Change My Password</a>
+            </div>
+        </div>
+    </div>
+</div>

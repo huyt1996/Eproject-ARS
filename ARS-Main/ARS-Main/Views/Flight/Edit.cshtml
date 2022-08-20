@@ -1,4 +1,4 @@
-﻿@model ARS_Main.Models.AeroPlaneInfo
+﻿@model ARS_Main.Models.Flight
 
 @{
     ViewBag.Title = "Edit";
@@ -215,8 +215,9 @@
 <!-- main content start-->
 <div id="page-wrapper">
     <div class="main-page">
-        <h2 class="title1">Aeriplane</h2>
+        <h2 class="title1">Blank Page</h2>
         <div class="blank-page widget-shadow scroll" id="style-2 div1">
+
             <h2>Edit</h2>
 
             @using (Html.BeginForm())
@@ -224,24 +225,64 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-                    <h4>AeroPlaneInfo</h4>
+                    <h4>Flight</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.PlaneID)
+                    @Html.HiddenFor(model => model.ID)
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.APlaneName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.From, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.APlaneName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.APlaneName, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.From, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.From, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.SeatingCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.To, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.SeatingCapacity, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.SeatingCapacity, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.To, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DepDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DepDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DepDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DepTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DepTime, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DepTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ArDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ArDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ArDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ArTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ArTime, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ArTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PlaneId, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PlaneId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PlaneId, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -261,9 +302,9 @@
                 </div>
             }
 
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
         </div>
     </div>
-</div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

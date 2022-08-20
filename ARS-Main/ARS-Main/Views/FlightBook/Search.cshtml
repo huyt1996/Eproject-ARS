@@ -1,8 +1,8 @@
-﻿@model IEnumerable<ARS_Main.Models.AeroPlaneInfo>
+﻿@model IEnumerable<ARS_Main.Models.Flight>
 
 @{
     ViewBag.Title = "Search Result";
-    Layout = "~/Views/Shared/_VietUserLayoutPage.cshtml";
+    Layout = "~/Views/Shared/_VietUserLayoutPage2.cshtml";
 }
 
 <h2>Search Results</h2>
@@ -14,8 +14,10 @@
                 <th>Plane Name</th>
                 <th>From</th>
                 <th>To</th>
-                <th>Seats Available</th>
-                <th>Flight Time</th>
+                <th>Departure Date</th>
+                <th>Departure Time</th>
+                <th>Arrival Date</th>
+                <th>Arrival Time</th>
                 <th>Price</th>
                 <th></th>
 
@@ -29,24 +31,26 @@
                         @{ 
                             int pi = int.Parse(item.PlaneId.ToString());
                             var dd = new ARS_Main.Models.ApplicationDbContext();
-                            var pname = dd.PlaneInfos.Where(a => a.PlaneID == pi).FirstOrDefault();
-                            @pname.APlaneName
+                            var pname = dd.Planes.Where(a => a.PlaneID == pi).FirstOrDefault();
+                            @pname.PlaneName
                         }
                     </td>
 
-                    <td>@item.ResFrom</td>
-                    <td>@item.ResTo</td>
-                    <td>@item.PlaneSeat</td>
-                    <td>@item.ResTime</td>
-                    <td>@item.ResTicketPrice</td>
+                    <td>@item.From</td>
+                    <td>@item.To</td>
+                    <td>@item.DepDate</td>
+                    <td>@item.DepTime</td>
+                    <td>@item.ArDate</td>
+                    <td>@item.ArTime</td>
+                    <td>@item.Price</td>
                     <td>
-                        @if (Session["UserId"] == null)
-                        { 
-                            <a href="@Url.Action("Login", "Account")" class="btn btn-success">Please login for Booking</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Booking", "Passengers", new { @fid = @item.ID})" class="btn btn-success">Book Flight Now</a>
                         }
                         else
                         {
-                            <a href="@Url.Action("Booking", "FlightBook", new { @fid = @item.ResID})" class="btn btn-success">Book Flight Now</a>
+                            <a href="@Url.Action("Login", "Account")" class="btn btn-success">Please login for Booking</a>   
                         }
                     </td>
                 </tr>

@@ -10,107 +10,110 @@ using ARS_Main.Models;
 
 namespace ARS_Main.Controllers
 {
-    public class UserAccountsController : Controller
+    public class FlightController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: UserAccounts
+        // GET: Flight
         public ActionResult Index()
         {
-            return View(db.UserLogins.ToList());
+            return View(db.Flights.ToList());
         }
 
-        // GET: UserAccounts/Details/5
+        // GET: Flight/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisterViewModel registerViewModel = db.UserLogins.Find(id);
-            if (registerViewModel == null)
+            Flight flight = db.Flights.Find(id);
+            if (flight == null)
             {
                 return HttpNotFound();
             }
-            return View(registerViewModel);
+            return View(flight);
         }
 
-        // GET: UserAccounts/Create
+        // GET: Flight/Create
         public ActionResult Create()
         {
+            ViewBag.PlaneId = new SelectList(db.Planes, "PlaneID", "PlaneName");
             return View();
         }
 
-        // POST: UserAccounts/Create
+        // POST: Flight/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,UserRoles,UserName,FirstName,LastName,Address,Email,PhoneNumber,Password,ConfirmPassword,Gender,Age,CreditCardNumber,SkyMile")] RegisterViewModel registerViewModel)
+        public ActionResult Create([Bind(Include = "ID,From,To,DepDate,DepTime,ArDate,ArTime,PlaneId,Price")] Flight flight)
         {
+            ViewBag.PlaneId = new SelectList(db.Planes, "PlaneID", "PlaneName");
             if (ModelState.IsValid)
             {
-                db.UserLogins.Add(registerViewModel);
+                db.Flights.Add(flight);
                 db.SaveChanges();
+                ViewBag.m = "Record Saved";
                 return RedirectToAction("Index");
             }
 
-            return View(registerViewModel);
+            return View(flight);
         }
 
-        // GET: UserAccounts/Edit/5
+        // GET: Flight/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisterViewModel registerViewModel = db.UserLogins.Find(id);
-            if (registerViewModel == null)
+            Flight flight = db.Flights.Find(id);
+            if (flight == null)
             {
                 return HttpNotFound();
             }
-            return View(registerViewModel);
+            return View(flight);
         }
 
-        // POST: UserAccounts/Edit/5
+        // POST: Flight/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,UserRoles,UserName,FirstName,LastName,Address,Email,PhoneNumber,Password,ConfirmPassword,Gender,Age,CreditCardNumber,SkyMile")] RegisterViewModel registerViewModel)
+        public ActionResult Edit([Bind(Include = "ID,From,To,DepDate,DepTime,ArDate,ArTime,PlaneId,Price")] Flight flight)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(registerViewModel).State = EntityState.Modified;
+                db.Entry(flight).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(registerViewModel);
+            return View(flight);
         }
 
-        // GET: UserAccounts/Delete/5
+        // GET: Flight/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RegisterViewModel registerViewModel = db.UserLogins.Find(id);
-            if (registerViewModel == null)
+            Flight flight = db.Flights.Find(id);
+            if (flight == null)
             {
                 return HttpNotFound();
             }
-            return View(registerViewModel);
+            return View(flight);
         }
 
-        // POST: UserAccounts/Delete/5
+        // POST: Flight/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RegisterViewModel registerViewModel = db.UserLogins.Find(id);
-            db.UserLogins.Remove(registerViewModel);
+            Flight flight = db.Flights.Find(id);
+            db.Flights.Remove(flight);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
